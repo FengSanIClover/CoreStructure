@@ -19,6 +19,8 @@ using Unity;
 using Unity.Lifetime;
 using URF.Core.Abstractions;
 using URF.Core.EF;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
 
 namespace Northwind.WebApi.Host
 {
@@ -63,50 +65,55 @@ namespace Northwind.WebApi.Host
 
             #region 加入swagger
             // Swagger 產生器是負責取得 API 的規格並產生 SwaggerDocument 物件。
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc
-            //    (
-            //    // name: 攸關 SwaggerDocument 的 URL 位置。
-            //        name: "v1",
-            //        // info: 是用於 SwaggerDocument 版本資訊的顯示(內容非必填)。
-            //        info: new Info
-            //        {
-            //            Title = "RESTful API",
-            //            Version = "1.0.0",
-            //            Description = "This is ASP.NET Core RESTful API Sample.",
-            //            TermsOfService = "None",
-            //            Contact = new Contact
-            //            {
-            //                Name = "John Wu",
-            //                Url = "https://blog.johnwu.cc"
-            //            },
-            //            License = new License
-            //            {
-            //                Name = "CC BY-NC-SA 4.0",
-            //                Url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
-            //            }
-            //        }
-            //     );
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc
+                (
+                // name: 攸關 SwaggerDocument 的 URL 位置。
+                    name: "v1",
+                    // info: 是用於 SwaggerDocument 版本資訊的顯示(內容非必填)。
+                    info: new Info
+                    {
+                        Title = "RESTful API",
+                        Version = "1.0.0",
+                        Description = "This is ASP.NET Core RESTful API Sample.",
+                        TermsOfService = "None",
+                        Contact = new Contact
+                        {
+                            Name = "John Wu",
+                            Url = "https://blog.johnwu.cc"
+                        },
+                        License = new License
+                        {
+                            Name = "CC BY-NC-SA 4.0",
+                            Url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                        }
+                    }
+                 );
 
-            //    var filePath = Path.Combine(AppContext.BaseDirectory, "Api.xml");
-            //    c.IncludeXmlComments(filePath);
+                var filePath = Path.Combine(AppContext.BaseDirectory, "Api.xml");
+                c.IncludeXmlComments(filePath);
 
-            //    //filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "Api.xml");
-            //    //c.IncludeXmlComments(filePath);
-            //    var appRoot = AppContext.BaseDirectory.Replace("\\69.API\\ThinkPower.WebApi.Host\\bin\\Debug\\netcoreapp2.2", "");
-            //    //AppContext.BaseDirectory == "C:\\Users\\User\\Desktop\\Candel\\ThinkPowerPractice1\\69.API\\ThinkPower.WebApi.Host\\bin\\Debug\\netcoreapp2.2\\"
-            //    // #if Debug
-            //    filePath = $"{appRoot}00.Library\\TP5.Core.NetCore\\bin\\Debug\\netcoreapp2.2\\Api.xml";
-            //    c.IncludeXmlComments(filePath);
+                // 舊有
+                //filePath = Path.Combine(PlatformServices.Default.Application.ApplicationBasePath, "Api.xml");
+                //c.IncludeXmlComments(filePath);
 
-            //    filePath = $"{appRoot}62.Addons\\ThinkPower.SystemManagement\\ThinkPower.SystemManagement.WebApi\\bin\\Debug\\netcoreapp2.2\\Api.xml";
-            //    c.IncludeXmlComments(filePath);
+                var appRoot = AppContext.BaseDirectory.Replace("\\69.API\\Northwind.WebApi.Host\\bin\\Debug\\netcoreapp2.2", "");
 
-            //    filePath = $"{appRoot}12.Entities\\ThinkPower.Entities\\bin\\Debug\\netcoreapp2.2\\Api.xml";
-            //    c.IncludeXmlComments(filePath);
-            //    // #endif
-            //});
+                // 舊有
+                //AppContext.BaseDirectory == "C:\\Users\\User\\Desktop\\Candel\\ThinkPowerPractice1\\69.API\\ThinkPower.WebApi.Host\\bin\\Debug\\netcoreapp2.2\\"
+                // #if Debug
+
+                filePath = $"{appRoot}00.Library\\TP5.Core.NetCore\\bin\\Debug\\netcoreapp2.2\\Api.xml";
+                c.IncludeXmlComments(filePath);
+
+                //filePath = $"{appRoot}62.Addons\\ThinkPower.SystemManagement\\ThinkPower.SystemManagement.WebApi\\bin\\Debug\\netcoreapp2.2\\Api.xml";
+                //c.IncludeXmlComments(filePath);
+
+                filePath = $"{appRoot}12.Entities\\Northwind.Entities\\bin\\Debug\\netcoreapp2.2\\Api.xml";
+                c.IncludeXmlComments(filePath);
+                // #endif
+            });
             #endregion
 
             #region 加入JWT
