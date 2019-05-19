@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\00.Library\TP5.ModuleResolver.NetCore\TP5.ModuleResolver.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\12.Entities\Northwind.Entities\Northwind.Entities.csproj" />
   </ItemGroup>
 
 </Project>

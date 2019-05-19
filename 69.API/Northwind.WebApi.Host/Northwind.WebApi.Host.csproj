@@ -15,8 +15,10 @@
     <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.WebApiCompatShim" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="Unity.Microsoft.DependencyInjection" Version="5.9.1" />
@@ -26,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\12.Entities\Northwind.Entities\Northwind.Entities.csproj" />
     <ProjectReference Include="..\..\61.Modules\Northwind.SystemManagement\Northwind.SystemManagementInterface\Northwind.SystemManagementInterface.csproj" />
+    <ProjectReference Include="..\..\61.Modules\Northwind.SystemManagement\Northwind.SystemManagementService\Northwind.SystemManagementService.csproj" />
     <ProjectReference Include="..\..\61.Modules\Northwind.SystemManagement\Northwind.SystemManagerWebApi\Northwind.SystemManagerWebApi.csproj" />
   </ItemGroup>
 

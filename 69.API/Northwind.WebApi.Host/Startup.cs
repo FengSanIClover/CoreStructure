@@ -21,6 +21,12 @@ using URF.Core.Abstractions;
 using URF.Core.EF;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
+using Northwind.SystemManagementInterface;
+using Northwind.SystemManagementService;
+using Northwind.Entities;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Northwind.WebApi.Host
 {
@@ -117,30 +123,30 @@ namespace Northwind.WebApi.Host
             #endregion
 
             #region 加入JWT
-            //// configure strongly typed settings objects
-            //var appSettingsSection = _configure.GetSection("AppSettings");
-            //services.Configure<AppSettings>(appSettingsSection);
-            //// configure jwt authentication
-            //var appSettings = appSettingsSection.Get<AppSettings>();
-            //var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            //services.AddAuthentication(x =>
-            //{   //安裝Microsoft.AspNetCore.Authentication.JwtBearer
-            //    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //}).AddJwtBearer(x =>
-            //{
-            //    x.RequireHttpsMetadata = false;
-            //    x.SaveToken = true;
-            //    //安裝Microsoft.IdentityModel.Tokens
-            //    x.TokenValidationParameters = new TokenValidationParameters()
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(key),
-            //        ValidateIssuer = false,
-            //        ValidateAudience = false
-            //    };
-            //});
-            //services.AddScoped<IUserService, UserService>();
+            // configure strongly typed settings objects
+            var appSettingsSection = this.configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {   //安裝Microsoft.AspNetCore.Authentication.JwtBearer
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                //安裝Microsoft.IdentityModel.Tokens
+                x.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            services.AddScoped<IUserService, UserService>();
             #endregion
 
             services.AddScoped<DbContext, NorthwindContext>();
