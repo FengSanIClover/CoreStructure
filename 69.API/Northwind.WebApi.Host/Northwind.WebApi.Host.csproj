@@ -14,4 +14,8 @@
     <PackageReference Include="URF.Core.All" Version="1.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\12.Entities\Northwind.Entities\Northwind.Entities.csproj" />
+  </ItemGroup>
+
 </Project>
