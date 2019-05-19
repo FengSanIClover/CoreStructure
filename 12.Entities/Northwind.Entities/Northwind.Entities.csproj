@@ -11,4 +11,8 @@
     <PackageReference Include="URF.Core.EF.Trackable" Version="1.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\00.Library\TP5.ModuleResolver.NetCore\TP5.ModuleResolver.NetCore.csproj" />
+  </ItemGroup>
+
 </Project>
