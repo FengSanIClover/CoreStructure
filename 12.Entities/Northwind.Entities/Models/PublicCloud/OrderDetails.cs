@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using URF.Core.EF.Trackable;
 namespace Northwind.Entities.Models.PublicCloud
 {
-    public partial class OrderDetails
+    public partial class OrderDetails:Entity
     {
         public int OrderId { get; set; }
         public int ProductId { get; set; }

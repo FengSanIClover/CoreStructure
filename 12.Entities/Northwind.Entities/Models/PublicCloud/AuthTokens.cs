@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using URF.Core.EF.Trackable;
 namespace Northwind.Entities.Models.PublicCloud
 {
-    public partial class AuthTokens
+    public partial class AuthTokens:Entity
     {
         public int TokenId { get; set; }
         public int? AccountId { get; set; }

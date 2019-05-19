@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using URF.Core.EF.Trackable;
 namespace Northwind.Entities.Models.PublicCloud
 {
-    public partial class Orders
+    public partial class Orders:Entity
     {
         public Orders()
         {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using URF.Core.EF.Trackable;
 namespace Northwind.Entities.Models.PublicCloud
 {
-    public partial class Shippers
+    public partial class Shippers:Entity
     {
         public Shippers()
         {
