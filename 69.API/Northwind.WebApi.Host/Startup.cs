@@ -107,8 +107,8 @@ namespace Northwind.WebApi.Host
                 filePath = $"{appRoot}00.Library\\TP5.Core.NetCore\\bin\\Debug\\netcoreapp2.2\\Api.xml";
                 c.IncludeXmlComments(filePath);
 
-                //filePath = $"{appRoot}62.Addons\\ThinkPower.SystemManagement\\ThinkPower.SystemManagement.WebApi\\bin\\Debug\\netcoreapp2.2\\Api.xml";
-                //c.IncludeXmlComments(filePath);
+                filePath = $"{appRoot}61.Modules\\Northwind.SystemManagement\\Northwind.SystemManagement.WebApi\\bin\\Debug\\netcoreapp2.2\\Api.xml";
+                c.IncludeXmlComments(filePath);
 
                 filePath = $"{appRoot}12.Entities\\Northwind.Entities\\bin\\Debug\\netcoreapp2.2\\Api.xml";
                 c.IncludeXmlComments(filePath);
@@ -194,8 +194,8 @@ namespace Northwind.WebApi.Host
             container.RegisterType<IUnitOfWork, UnitOfWork>(new PerResolveLifetimeManager());
             // 透過 ModuleLoader 載入各模組(Addons)的 Unity RegisterType 設定。
             ModuleLoader.LoadContainer(container, ".\\bin\\Debug\\netcoreapp2.2", "Northwind.*.dll");
-            //ModuleLoader.LoadContainer(container, ".\\bin\\Debug\\netcoreapp2.2", "ThinkPower.SystemManagement.Interface.dll");
-            //ModuleLoader.LoadContainer(container, ".\\bin\\Debug\\netcoreapp2.2", "ThinkPower.SystemManagement.WebApi.dll");
+            ModuleLoader.LoadContainer(container, ".\\bin\\Debug\\netcoreapp2.2", "Northwind.SystemManagement.Interface.dll");
+            ModuleLoader.LoadContainer(container, ".\\bin\\Debug\\netcoreapp2.2", "Northwind.SystemManagement.WebApi.dll");
         }
     }
 }

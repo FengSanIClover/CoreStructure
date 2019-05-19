@@ -25,6 +25,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\12.Entities\Northwind.Entities\Northwind.Entities.csproj" />
+    <ProjectReference Include="..\..\61.Modules\Northwind.SystemManagement\Northwind.SystemManagementInterface\Northwind.SystemManagementInterface.csproj" />
+    <ProjectReference Include="..\..\61.Modules\Northwind.SystemManagement\Northwind.SystemManagerWebApi\Northwind.SystemManagerWebApi.csproj" />
   </ItemGroup>
 
 </Project>
