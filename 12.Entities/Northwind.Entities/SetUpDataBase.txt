@@ -1,5 +1,9 @@
 ﻿//反向工程 根據現有的資料庫來建立 EF 模型
-Scaffold-DbContext "Data Source=.\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+Scaffold-DbContext "Data Source=.\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models\PublicCloud
 //Scaffold-DbContext "Data Source=203.69.87.152;Initial Catalog=InsuranceOnPublicCloud;Persist Security Info=True;User ID=InsuranceOnAdmin;Password=1qaz@WSX" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models\PublicCloud
 // 覆寫原有model
 Scaffold-DbContext "Data Source=203.69.87.152;Initial Catalog=InsuranceOnPublicCloud;Persist Security Info=True;User ID=InsuranceOnAdmin;Password=1qaz@WSX" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models\PublicCloud -f
+
+把資料庫內的資料表注入 Entities
+套件管理器主控台-> 下特定指令(指令很長背不起來，通常會記在備用文件內直接 Copy 過來，變更Address UserID Password 就好，第一次執行最後面不用加上 -f ， -f 的用意是覆寫原本的資料表)
+(預設專案路徑記得要改成 Entities 的路徑)
