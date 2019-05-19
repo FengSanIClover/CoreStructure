@@ -1,0 +1,5 @@
+﻿//反向工程 根據現有的資料庫來建立 EF 模型
+Scaffold-DbContext "Data Source=.\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+//Scaffold-DbContext "Data Source=203.69.87.152;Initial Catalog=InsuranceOnPublicCloud;Persist Security Info=True;User ID=InsuranceOnAdmin;Password=1qaz@WSX" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models\PublicCloud
+// 覆寫原有model
+Scaffold-DbContext "Data Source=203.69.87.152;Initial Catalog=InsuranceOnPublicCloud;Persist Security Info=True;User ID=InsuranceOnAdmin;Password=1qaz@WSX" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models\PublicCloud -f
