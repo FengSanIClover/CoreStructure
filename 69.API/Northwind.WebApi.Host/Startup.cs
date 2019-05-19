@@ -179,6 +179,34 @@ namespace Northwind.WebApi.Host
                 app.UseHsts();
             }
 
+            #region 加入Swagger
+
+            // Swagger Middleware 負責路由，提供 SwaggerDocument 物件。
+            // 可以從 URL 查看 Swagger 產生器產生的 SwaggerDocument 物件。
+            // http://localhost:5000/swagger/v1/swagger.json
+            app.UseSwagger();
+
+            // SwaggerUI 是負責將 SwaggerDocument 物件變成漂亮的介面。
+            // 預設 URL：http://localhost:5000/swagger
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint
+                (
+                // url: 需配合 SwaggerDoc 的 name。 "/swagger/{SwaggerDoc name}/swagger.json"
+                url: "/swagger/v1/swagger.json",
+                name: "RESTful API v1.0.0"
+                );
+            });
+            #endregion
+
+            #region 加入JWT
+            app.UseCors(x =>
+                x.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            app.UseAuthentication();
+            #endregion
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }
@@ -193,6 +221,8 @@ namespace Northwind.WebApi.Host
             {
                 mc.AddProfile(new MappingProfile());
             });
+
+
 
             // IMapper mapper = mappingConfig.CreateMapper();
             container.RegisterInstance<IMapper>(mappingConfig.CreateMapper());
